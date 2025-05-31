@@ -1,0 +1,535 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos del header */
+header {
+    width: 100%;
+    background-color: #1a1a1a;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.navigation {
+    display: none;
+}
+
+.nav-link {
+    color: #e8e6e3;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #c8a97e;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #c8a97e;
+}
+
+.login-button {
+    background-color: transparent;
+    color: #c8a97e;
+    border: 1px solid #c8a97e;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.login-button:hover {
+    background-color: #c8a97e;
+    color: #1a1a1a;
+}
+
+/* Banner de página */
+.page-banner {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.page-banner h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.page-banner p {
+    color: #c8a97e;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    letter-spacing: 1px;
+}
+
+/* Chef Estrella */
+.featured-chef {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.featured-chef-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.chef-image {
+    position: relative;
+    max-width: 100%;
+}
+
+.chef-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.chef-awards {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.award {
+    background-color: rgba(26, 26, 26, 0.9);
+    color: #c8a97e;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.award svg {
+    width: 18px;
+    height: 18px;
+    color: #c8a97e;
+}
+
+.chef-info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.chef-title {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.chef-title h2 {
+    color: #c8a97e;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.chef-title h3 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.chef-bio p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.chef-bio blockquote {
+    border-left: 3px solid #c8a97e;
+    padding-left: 20px;
+    font-style: italic;
+    color: #666;
+    margin: 30px 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.chef-signature {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.chef-signature img {
+    max-width: 150px;
+    height: auto;
+}
+
+/* Equipo de Chefs */
+.chef-team {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.chef-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.chef-card {
+    background-color: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.chef-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.chef-card-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.chef-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.chef-card:hover .chef-card-image img {
+    transform: scale(1.05);
+}
+
+.chef-card-content {
+    padding: 25px;
+}
+
+.chef-card-content h4 {
+    color: #c8a97e;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.chef-card-content h5 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.chef-card-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.chef-specialty {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.chef-specialty span {
+    color: #8b0000;
+    font-weight: 600;
+}
+
+/* Filosofía Culinaria */
+.culinary-philosophy {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.philosophy-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.philosophy-text {
+    flex: 1;
+}
+
+.philosophy-text h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.philosophy-text h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #c8a97e;
+}
+
+.philosophy-text p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.philosophy-text ul {
+    list-style: none;
+    margin: 20px 0 30px;
+}
+
+.philosophy-text ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.philosophy-text ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: #c8a97e;
+    border-radius: 50%;
+}
+
+.philosophy-text ul li strong {
+    color: #333;
+}
+
+.philosophy-image {
+    flex: 1;
+}
+
+.philosophy-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos del footer */
+footer {
+    background-color: #1a1a1a;
+    color: #e8e6e3;
+    padding: 60px 0 20px;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #c8a97e;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #c8a97e;
+}
+
+.footer-section p {
+    color: #bbb;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+}
+
+.footer-section ul li a:hover {
+    color: #c8a97e;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.social-link {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+}
+
+.social-link:hover {
+    color: #c8a97e;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.footer-bottom p {
+    color: #777;
+    font-size: 0.8rem;
+}
+
+/* Estilos responsivos */
+@media (min-width: 768px) {
+    .navigation {
+        display: flex;
+    }
+    
+    .featured-chef-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .chef-image {
+        flex: 1;
+        max-width: 45%;
+    }
+    
+    .chef-info {
+        flex: 1;
+        padding-left: 40px;
+    }
+    
+    .chef-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .philosophy-content {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .philosophy-text {
+        padding-right: 40px;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .chef-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .page-banner h1 {
+        font-size: 2.2rem;
+    }
+    
+    .chef-title h3 {
+        font-size: 2rem;
+    }
+    
+    .section-header h2, 
+    .philosophy-text h2 {
+        font-size: 2rem;
+    }
+    
+    .chef-awards {
+        position: static;
+        margin-top: 15px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}

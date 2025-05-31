@@ -1,0 +1,212 @@
+/* Estilos generales combinados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+p {
+    color: #6c757d;
+}
+
+/* Estilos del formulario principal */
+.form-container {
+    padding: 30px;
+}
+
+.form-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.form-col {
+    flex: 1;
+    padding: 0 10px;
+    min-width: 250px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #495057;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #4dabf7;
+    box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.1);
+}
+
+.form-hint {
+    font-size: 14px;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    background-color: #4dabf7;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3793dd;
+}
+
+.form-footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #e9ecef;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Estilos de la tarjeta */
+#tarjetaSection {
+    margin: 20px 0;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.card {
+    width: 100%;
+    max-width: 340px;
+    height: 210px;
+    perspective: 1000px;
+    margin: 0 auto;
+    position: relative;
+    background: linear-gradient(45deg, #1a2a6c, #b21f1f, #fdbb2d);
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.card-chip {
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(135deg, #ddd 0%, #999 100%);
+    border-radius: 8px;
+}
+
+.card-brand {
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.card-number {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card-cvv-front label,
+.card-expires label,
+.card-holder label {
+    font-size: 10px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-col {
+        flex: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .card {
+        width: 90%;
+    }
+}

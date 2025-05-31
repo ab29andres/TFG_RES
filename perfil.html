@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Restaurante Elegante</title>
+    <link rel="stylesheet" href="styles/perfil.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Logo del restaurante">
+                </div>
+                <nav class="navigation">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="menu.html" class="nav-link">Menú</a>
+                    <a href="reservas.html" class="nav-link">Reservas</a>
+                    <a href="#" class="nav-link">Eventos</a>
+                    <a href="#" class="nav-link">Sobre Nosotros</a>
+                    <a href="#footer" class="nav-link">Contacto</a>
+                </nav>
+                <a href="#" class="login-button active">Mi Perfil</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal - Perfil de usuario -->
+    <main>
+        <div class="container">
+            <h1 class="profile-title">Mi Perfil</h1>
+            
+            <div class="profile-container">
+                <!-- Información del perfil -->
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="/placeholder.svg?height=100&width=100" alt="Foto de perfil">
+                        </div>
+                        <div class="profile-info">
+                            <h2 class="profile-name">Ana García</h2>
+                            <p class="profile-member-since">Miembro desde: Enero 2023</p>
+                            <div class="profile-level">
+                                <span class="level-badge">Nivel Oro</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Email:</span>
+                            <span class="detail-value">ana.garcia@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Teléfono:</span>
+                            <span class="detail-value">+34 612 345 678</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Dirección:</span>
+                            <span class="detail-value">Calle Principal 123, Madrid</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Preferencias:</span>
+                            <span class="detail-value">Vegetariano, Mesa junto a ventana</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Contraseña:</span>
+                            <span class="detail-value">*******</span>
+                        </div>
+                    </div>
+                    
+                    <button class="edit-profile-btn">Editar Perfil</button>
+                </div>
+                
+                <!-- Sistema de puntos -->
+                <div class="points-card">
+                    <h2 class="card-title">Mis Puntos</h2>
+                    
+                    <div class="points-summary">
+                        <div class="points-circle">
+                            <span class="points-value">2,450</span>
+                            <span class="points-label">puntos</span>
+                        </div>
+                    </div>
+                    
+                    <div class="points-progress">
+                        <div class="progress-label">
+                            <span>Nivel Oro</span>
+                            <span>Nivel Platino</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%;"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span>2,450 / 3,500 puntos para el siguiente nivel</span>
+                        </div>
+                    </div>
+                    
+                    <div class="points-info">
+                        <h3>¿Cómo acumular puntos?</h3>
+                        <ul>
+                            <li>10 puntos por cada 3 euros gastados en el restaurante</li>
+                            <li>100 puntos extra por cada reserva completada</li>
+                            <li>250 puntos por compartir tu experiencia en redes sociales</li>
+                            <li>500 puntos por tu cumpleaños</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Historial de pedidos -->
+                <div class="history-card">
+                    <h2 class="card-title">Historial de Visitas</h2>
+                    
+                    <div class="history-list">
+                        <div class="history-item">
+                            <div class="history-date">15 Abril 2024</div>
+                            <div class="history-details">
+                                <div class="history-title">Cena - 4 personas</div>
+                                <div class="history-amount">Total: 120€</div>
+                                <div class="history-points">+1,200 puntos</div>
+                            </div>
+                            <div class="history-actions">
+                                <button class="view-details-btn">Ver detalles</button>
+                            </div>
+                        </div>
+                        
+                        <div class="history-item">
+                            <div class="history-date">28 Marzo 2024</div>
+                            <div class="history-details">
+                                <div class="history-title">Comida - 2 personas</div>
+                                <div class="history-amount">Total: 75€</div>
+                                <div class="history-points">+750 puntos</div>
+                            </div>
+                            <div class="history-actions">
+                                <button class="view-details-btn">Ver detalles</button>
+                            </div>
+                        </div>
+                        
+                        <div class="history-item">
+                            <div class="history-date">14 Febrero 2024</div>
+                            <div class="history-details">
+                                <div class="history-title">Cena San Valentín - 2 personas</div>
+                                <div class="history-amount">Total: 150€</div>
+                                <div class="history-points">+1,500 puntos</div>
+                            </div>
+                            <div class="history-actions">
+                                <button class="view-details-btn">Ver detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="view-all-btn">Ver todo el historial</button>
+                </div>
+                
+                <!-- Catálogo de recompensas -->
+                <div class="rewards-card">
+                    <h2 class="card-title">Catálogo de Recompensas</h2>
+                    
+                    <div class="rewards-filter">
+                        <button class="filter-btn active" data-filter="all">Todas</button>
+                        <button class="filter-btn" data-filter="food">Comida</button>
+                        <button class="filter-btn" data-filter="drinks">Bebidas</button>
+                        <button class="filter-btn" data-filter="experiences">Experiencias</button>
+                    </div>
+                    
+                    <div class="rewards-list">
+                        <div class="reward-item" data-category="food">
+                            <div class="reward-image">
+                                <img src="/placeholder.svg?height=120&width=120" alt="Postre gratis">
+                            </div>
+                            <div class="reward-info">
+                                <h3 class="reward-title">Postre a elegir</h3>
+                                <p class="reward-description">Cualquier postre de nuestra carta, gratis con tu próxima visita.</p>
+                                <div class="reward-points">1,500 puntos</div>
+                            </div>
+                            <button class="redeem-btn" data-reward-id="1" data-reward-points="1500">Canjear</button>
+                        </div>
+                        
+                        <div class="reward-item" data-category="drinks">
+                            <div class="reward-image">
+                                <img src="/placeholder.svg?height=120&width=120" alt="Botella de vino">
+                            </div>
+                            <div class="reward-info">
+                                <h3 class="reward-title">Botella de vino selecto</h3>
+                                <p class="reward-description">Botella de vino de nuestra bodega especial.</p>
+                                <div class="reward-points">2,000 puntos</div>
+                            </div>
+                            <button class="redeem-btn" data-reward-id="2" data-reward-points="2000">Canjear</button>
+                        </div>
+                        
+                        <div class="reward-item" data-category="experiences">
+                            <div class="reward-image">
+                                <img src="/placeholder.svg?height=120&width=120" alt="Cena para dos">
+                            </div>
+                            <div class="reward-info">
+                                <h3 class="reward-title">Cena para dos</h3>
+                                <p class="reward-description">Menú degustación completo para dos personas.</p>
+                                <div class="reward-points">5,000 puntos</div>
+                            </div>
+                            <button class="redeem-btn" data-reward-id="3" data-reward-points="5000">Canjear</button>
+                        </div>
+                        
+                        <div class="reward-item" data-category="food">
+                            <div class="reward-image">
+                                <img src="/placeholder.svg?height=120&width=120" alt="Entrante gratis">
+                            </div>
+                            <div class="reward-info">
+                                <h3 class="reward-title">Entrante a elegir</h3>
+                                <p class="reward-description">Cualquier entrante de nuestra carta, gratis con tu próxima visita.</p>
+                                <div class="reward-points">1,200 puntos</div>
+                            </div>
+                            <button class="redeem-btn" data-reward-id="4" data-reward-points="1200">Canjear</button>
+                        </div>
+                        
+                        <div class="reward-item" data-category="experiences">
+                            <div class="reward-image">
+                                <img src="/placeholder.svg?height=120&width=120" alt="Clase de cocina">
+                            </div>
+                            <div class="reward-info">
+                                <h3 class="reward-title">Clase de cocina con nuestro chef</h3>
+                                <p class="reward-description">Aprende a cocinar con nuestro chef ejecutivo (sesión de 2 horas).</p>
+                                <div class="reward-points">3,500 puntos</div>
+                            </div>
+                            <button class="redeem-btn" data-reward-id="5" data-reward-points="3500">Canjear</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recompensas canjeadas -->
+                <div class="redeemed-card">
+                    <h2 class="card-title">Mis Recompensas Canjeadas</h2>
+                    
+                    <div class="redeemed-list" id="redeemedList">
+                        <div class="empty-redeemed">
+                            <p>Aún no has canjeado ninguna recompensa.</p>
+                            <p>¡Explora nuestro catálogo y canjea tus puntos!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de confirmación de canje -->
+    <div class="modal" id="redeemModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Confirmar Canje</h2>
+            <div class="modal-body">
+                <p>Estás a punto de canjear:</p>
+                <div class="confirm-reward-info">
+                    <h3 id="confirmRewardTitle"></h3>
+                    <p id="confirmRewardPoints"></p>
+                </div>
+                <p>¿Estás seguro de que deseas continuar?</p>
+            </div>
+            <div class="modal-actions">
+                <button id="cancelRedeem" class="cancel-btn">Cancelar</button>
+                <button id="confirmRedeem" class="confirm-btn">Confirmar Canje</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de éxito -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success">
+            <span class="close-modal">&times;</span>
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" width="64" height="64">
+                    <circle cx="12" cy="12" r="11" fill="#b8860b" stroke="none"/>
+                    <path d="M7 13l3 3 7-7" stroke="white" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <h2>¡Canje Exitoso!</h2>
+            <div class="modal-body">
+                <p>Has canjeado con éxito:</p>
+                <div class="confirm-reward-info">
+                    <h3 id="successRewardTitle"></h3>
+                </div>
+                <p>Tu código de canje es: <strong id="redeemCode"></strong></p>
+                <p>Muestra este código en tu próxima visita para disfrutar de tu recompensa.</p>
+                <p>Tus puntos han sido actualizados.</p>
+            </div>
+            <div class="modal-actions">
+                <button id="closeSuccess" class="confirm-btn">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Email: reservas@restaurante.com</p>
+                    <p>Teléfono: +123 456 7890</p>
+                    <p>Dirección: Calle Gourmet 123, Ciudad</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Horario</h3>
+                    <p>Lunes a Jueves: 12:00 - 23:00</p>
+                    <p>Viernes y Sábado: 12:00 - 00:00</p>
+                    <p>Domingo: 12:00 - 22:00</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Menú</a></li>
+                        <li><a href="#">Reservas</a></li>
+                        <li><a href="#">Eventos Privados</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">TripAdvisor</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Restaurante. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/perfil.js"></script>
+</body>
+</html>
