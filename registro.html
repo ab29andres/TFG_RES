@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Restaurante</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/registro.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Logo del restaurante">
+                </div>
+                <nav class="navigation">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="menu.html" class="nav-link">Menú</a>
+                    <a href="reservar.html" class="nav-link">Reservas</a>
+                    <a href="#" class="nav-link">Eventos</a>
+                    <a href="#" class="nav-link">Sobre Nosotros</a>
+                    <a href="#footer" class="nav-link">Contacto</a>
+                </nav>
+                <a href="login.html" class="login-button">Iniciar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="register-section">
+            <div class="container">
+                <div class="register-container">
+                    <div class="register-header">
+                        <h1>Crear Cuenta</h1>
+                        <p>Únete a nuestra comunidad gastronómica</p>
+                    </div>
+
+                    <form id="registerForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Nombre</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                                <div class="error-message" id="firstNameError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Apellido</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                                <div class="error-message" id="lastNameError"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Nombre de Usuario</label>
+                            <input type="text" id="username" name="username" required>
+                            <div class="error-message" id="usernameError"></div>
+                            <div class="success-message" id="usernameSuccess"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-message" id="emailError"></div>
+                            <div class="success-message" id="emailSuccess"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Número de Teléfono</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required>
+                            <div class="error-message" id="phoneError"></div>
+                            <div class="success-message" id="phoneSuccess"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <div class="input-icon">
+                                <input type="password" id="password" name="password" required>
+                                <span class="icon show-password" onclick="togglePassword('password')">👁️</span>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill" id="strengthFill"></div>
+                                </div>
+                                <div class="strength-text" id="strengthText">Ingrese una contraseña</div>
+                            </div>
+                            <div class="error-message" id="passwordError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar Contraseña</label>
+                            <div class="input-icon">
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                <span class="icon show-password" onclick="togglePassword('confirmPassword')">👁️</span>
+                            </div>
+                            <div class="error-message" id="confirmPasswordError"></div>
+                            <div class="success-message" id="confirmPasswordSuccess"></div>
+                        </div>
+
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">
+                                Acepto los <a href="#" target="_blank">Términos y Condiciones</a> y la 
+                                <a href="#" target="_blank">Política de Privacidad</a>
+                            </label>
+                        </div>
+                        <div class="error-message" id="termsError"></div>
+
+                        <button type="submit" class="register-button" id="submitButton">
+                            <span id="buttonText">Crear Cuenta</span>
+                            <span id="buttonLoading" class="loading" style="display: none;"></span>
+                        </button>
+                    </form>
+
+                    <div class="login-link">
+                        <p>¿Ya tienes una cuenta? <a href="login.html">Inicia Sesión</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Email: reservas@restaurante.com</p>
+                    <p>Teléfono: +123 456 7890</p>
+                    <p>Dirección: Calle Gourmet 123, Ciudad</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Horario</h3>
+                    <p>Lunes a Jueves: 12:00 - 23:00</p>
+                    <p>Viernes y Sábado: 12:00 - 00:00</p>
+                    <p>Domingo: 12:00 - 22:00</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="menu.html">Menú</a></li>
+                        <li><a href="reservar.html">Reservas</a></li>
+                        <li><a href="#">Eventos Privados</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">TripAdvisor</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Restaurante. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/registro.js"></script>
+</body>
+
+</html>

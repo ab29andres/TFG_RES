@@ -188,9 +188,9 @@
                 </div>
             </div>
         </div>
-        <!-- Botón Orden de la mesa -->
+        <!-- Botón Orden de la mesa - ACTUALIZADO -->
         <div class="order-button-container" style="text-align: center; margin-top: 20px;">
-            <button class="order-button" onclick="placeOrder()">Orden de la mesa</button>
+            <button class="order-button" onclick="location.href='ordenMesa.html'">Orden de la mesa</button>
         </div>
         <!-- Features Section -->
         <div class="features-section">
@@ -200,6 +200,7 @@
                     <p>Descubra la excelencia en cada detalle</p>
                 </div>
                 <div class="features-grid">
+                    <!-- INGREDIENTES PREMIUM - ACTUALIZADO para que funcione igual que Chef Reconocido -->
                     <a href="premium.html" class="feature">
                         <div class="feature-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -249,50 +250,18 @@
             </div>
         </div>
     </main>
+    <!-- Footer dinámico -->
+    <div id="footer-placeholder"></div>
 
-    <footer id="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <p>Email: reservas@restaurante.com</p>
-                    <p>Teléfono: +123 456 7890</p>
-                    <p>Dirección: Calle Gourmet 123, Ciudad</p>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Horario</h3>
-                    <p>Lunes a Jueves: 12:00 - 23:00</p>
-                    <p>Viernes y Sábado: 12:00 - 00:00</p>
-                    <p>Domingo: 12:00 - 22:00</p>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Menú</a></li>
-                        <li><a href="reservar.html">Reservas</a></li>
-                        <li><a href="#">Eventos Privados</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Síguenos</h3>
-                    <div class="social-links">
-                        <a href="#" class="social-link">Facebook</a>
-                        <a href="#" class="social-link">Instagram</a>
-                        <a href="#" class="social-link">Twitter</a>
-                        <a href="#" class="social-link">TripAdvisor</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2024 Restaurante. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Script para insertar footer -->
+    <script>
+        fetch('footer.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(err => console.error('No se pudo cargar el footer:', err));
+    </script>
 </body>
 
 </html>
