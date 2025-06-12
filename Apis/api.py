@@ -61,6 +61,39 @@ def register_user():
         # Para mostrar error real en consola y en respuesta JSON
         print("Error en /register:", e)
         return jsonify({'error': str(e)}), 500
+    
+
+
+@app.route('/login', methods=['POST'])
+def login_user():
+    try:
+        data = request.get_json()
+
+        email = data.get('email')
+        password = data.get('password')
+
+        if not email or not password:
+            return jsonify({'error': 'Correo y contraseña son requeridos'}), 400
+
+        user = users_collection.find_one({'email': email})
+
+        if not user:
+            return jsonify({'error': 'Usuario no encontrado'}), 404
+
+        # Comparar contraseñas
+        if bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
+            return jsonify({
+                'message': 'Inicio de sesión exitoso',
+                'user_id': str(user['_id']),
+                'username': user['username'],
+                'email': user['email']
+            }), 200
+        else:
+            return jsonify({'error': 'Contraseña incorrecta'}), 401
+
+    except Exception as e:
+        print("Error en /login:", e)
+        return jsonify({'error': str(e)}), 500
 
 
 # Ejecutar la app
