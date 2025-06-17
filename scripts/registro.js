@@ -1,5 +1,3 @@
-// Variables para validación
-let isFormValid = false;
 const validationRules = {
     firstName: false,
     lastName: false,
@@ -8,184 +6,99 @@ const validationRules = {
     phone: false,
     password: false,
     confirmPassword: false,
-    terms: false
+    terms: false,
+    direccion: false,
 };
 
-// Función para mostrar/ocultar contraseña
-function togglePassword(fieldId) {
-    const field = document.getElementById(fieldId);
-    const icon = field.nextElementSibling;
+function showError(field, message) {
+    const error = document.getElementById(field.id + 'Error');
+    error.textContent = message;
+    error.style.display = 'block';
+    field.classList.add('error');
+    field.classList.remove('success');
+    validationRules[field.id] = false;
+}
+function validateDireccion() {
+    const field = document.getElementById('direccion');
+    const val = field.value.trim();
+    if (val.length < 5) showError(field, 'Debe ingresar una dirección válida');
+    else hideError(field);
+}
+document.getElementById('direccion').addEventListener('input', () => {
+    validateDireccion();
+    checkFormValidity();
+});
+validateDireccion();
+const data = {
+    username: document.getElementById('username').value,
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value,
+    password: document.getElementById('password').value,
+    firstName: document.getElementById('firstName').value,
+    lastName: document.getElementById('lastName').value,
+    direccion: document.getElementById('direccion').value,  // agregado
+};
 
-    if (field.type === 'password') {
-        field.type = 'text';
-        icon.textContent = '🙈';
-    } else {
-        field.type = 'password';
-        icon.textContent = '👁️';
-    }
+function hideError(field) {
+    const error = document.getElementById(field.id + 'Error');
+    error.style.display = 'none';
+    field.classList.remove('error');
+    field.classList.add('success');
+    validationRules[field.id] = true;
 }
 
-// Validación de nombre y apellido
-function validateName(fieldId) {
-    const field = document.getElementById(fieldId);
-    const error = document.getElementById(fieldId + 'Error');
-    const value = field.value.trim();
-
-    if (value.length < 2) {
-        showError(field, error, 'Debe tener al menos 2 caracteres');
-        validationRules[fieldId] = false;
-    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(value)) {
-        showError(field, error, 'Solo se permiten letras');
-        validationRules[fieldId] = false;
-    } else {
-        showSuccess(field, error);
-        validationRules[fieldId] = true;
-    }
+function validateName(field) {
+    const val = field.value.trim();
+    if (val.length < 2) showError(field, 'Debe tener al menos 2 caracteres');
+    else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(val)) showError(field, 'Solo letras');
+    else hideError(field);
 }
 
-// Validación de nombre de usuario
 function validateUsername() {
     const field = document.getElementById('username');
-    const error = document.getElementById('usernameError');
-    const success = document.getElementById('usernameSuccess');
-    const value = field.value.trim();
-
-    if (value.length < 3) {
-        showError(field, error, 'Debe tener al menos 3 caracteres');
-        hideSuccess(success);
-        validationRules.username = false;
-    } else if (value.length > 20) {
-        showError(field, error, 'No puede tener más de 20 caracteres');
-        hideSuccess(success);
-        validationRules.username = false;
-    } else if (!/^[a-zA-Z0-9_]+$/.test(value)) {
-        showError(field, error, 'Solo letras, números y guiones bajos');
-        hideSuccess(success);
-        validationRules.username = false;
-    } else {
-        hideError(field, error);
-        showSuccessMessage(success, 'Nombre de usuario disponible');
-        validationRules.username = true;
-    }
+    const val = field.value.trim();
+    if (val.length < 3) showError(field, 'Al menos 3 caracteres');
+    else if (val.length > 20) showError(field, 'Máximo 20 caracteres');
+    else if (!/^[a-zA-Z0-9_]+$/.test(val)) showError(field, 'Solo letras, números y _');
+    else hideError(field);
 }
 
-// Validación de email
 function validateEmail() {
     const field = document.getElementById('email');
-    const error = document.getElementById('emailError');
-    const success = document.getElementById('emailSuccess');
-    const value = field.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(value)) {
-        showError(field, error, 'Ingrese un email válido');
-        hideSuccess(success);
-        validationRules.email = false;
-    } else {
-        hideError(field, error);
-        showSuccessMessage(success, 'Email válido');
-        validationRules.email = true;
-    }
+    const val = field.value.trim();
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!re.test(val)) showError(field, 'Email inválido');
+    else hideError(field);
 }
 
-// Validación de teléfono
 function validatePhone() {
     const field = document.getElementById('phone');
-    const error = document.getElementById('phoneError');
-    const success = document.getElementById('phoneSuccess');
-    const value = field.value.trim();
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-
-    if (value.length < 10) {
-        showError(field, error, 'Debe tener al menos 10 dígitos');
-        hideSuccess(success);
-        validationRules.phone = false;
-    } else if (!phoneRegex.test(value.replace(/[\s\-$$$$]/g, ''))) {
-        showError(field, error, 'Formato de teléfono inválido');
-        hideSuccess(success);
-        validationRules.phone = false;
-    } else {
-        hideError(field, error);
-        showSuccessMessage(success, 'Teléfono válido');
-        validationRules.phone = true;
-    }
+    const val = field.value.trim().replace(/[\s\-]/g, '');
+    if (val.length < 10) showError(field, 'Al menos 10 dígitos');
+    else if (!/^\+?[0-9]{10,15}$/.test(val)) showError(field, 'Formato inválido');
+    else hideError(field);
 }
 
-// Validación de contraseña
 function validatePassword() {
     const field = document.getElementById('password');
-    const error = document.getElementById('passwordError');
-    const value = field.value;
-    const strengthFill = document.getElementById('strengthFill');
-    const strengthText = document.getElementById('strengthText');
-
-    let strength = 0;
-    let strengthLabel = '';
-
-    if (value.length >= 8) strength++;
-    if (/[a-z]/.test(value)) strength++;
-    if (/[A-Z]/.test(value)) strength++;
-    if (/[0-9]/.test(value)) strength++;
-    if (/[^A-Za-z0-9]/.test(value)) strength++;
-
-    // Actualizar barra de fuerza
-    strengthFill.className = 'strength-fill';
-    if (strength < 3) {
-        strengthFill.classList.add('strength-weak');
-        strengthLabel = 'Débil';
-    } else if (strength < 5) {
-        strengthFill.classList.add('strength-medium');
-        strengthLabel = 'Media';
-    } else {
-        strengthFill.classList.add('strength-strong');
-        strengthLabel = 'Fuerte';
-    }
-
-    strengthText.textContent = value.length > 0 ? `Fuerza: ${strengthLabel}` : 'Ingrese una contraseña';
-
-    if (value.length < 8) {
-        showError(field, error, 'Debe tener al menos 8 caracteres');
-        validationRules.password = false;
-    } else if (strength < 3) {
-        showError(field, error, 'La contraseña es muy débil');
-        validationRules.password = false;
-    } else {
-        hideError(field, error);
-        validationRules.password = true;
-    }
-
-    // Revalidar confirmación de contraseña
-    if (document.getElementById('confirmPassword').value) {
-        validateConfirmPassword();
-    }
+    const val = field.value;
+    if (val.length < 8) showError(field, 'Mínimo 8 caracteres');
+    else hideError(field);
+    validateConfirmPassword();  // revalidar confirm
 }
 
-// Validación de confirmación de contraseña
 function validateConfirmPassword() {
     const field = document.getElementById('confirmPassword');
-    const error = document.getElementById('confirmPasswordError');
-    const success = document.getElementById('confirmPasswordSuccess');
-    const password = document.getElementById('password').value;
-    const confirmPassword = field.value;
-
-    if (confirmPassword !== password) {
-        showError(field, error, 'Las contraseñas no coinciden');
-        hideSuccess(success);
-        validationRules.confirmPassword = false;
-    } else if (confirmPassword.length > 0) {
-        hideError(field, error);
-        showSuccessMessage(success, 'Las contraseñas coinciden');
-        validationRules.confirmPassword = true;
-    }
+    const pass = document.getElementById('password').value;
+    if (field.value !== pass) showError(field, 'No coinciden');
+    else hideError(field);
 }
 
-// Validación de términos
 function validateTerms() {
     const field = document.getElementById('terms');
     const error = document.getElementById('termsError');
-
     if (!field.checked) {
-        error.textContent = 'Debe aceptar los términos y condiciones';
+        error.textContent = 'Debe aceptar términos';
         error.style.display = 'block';
         validationRules.terms = false;
     } else {
@@ -194,58 +107,18 @@ function validateTerms() {
     }
 }
 
-// Funciones auxiliares para mostrar errores y éxitos
-function showError(field, errorElement, message) {
-    field.classList.add('error');
-    field.classList.remove('success');
-    errorElement.textContent = message;
-    errorElement.style.display = 'block';
-}
-
-function hideError(field, errorElement) {
-    field.classList.remove('error');
-    errorElement.style.display = 'none';
-}
-
-function showSuccess(field, errorElement) {
-    field.classList.add('success');
-    field.classList.remove('error');
-    errorElement.style.display = 'none';
-}
-
-function showSuccessMessage(successElement, message) {
-    successElement.textContent = message;
-    successElement.style.display = 'block';
-}
-
-function hideSuccess(successElement) {
-    successElement.style.display = 'none';
-}
-
-// Verificar si el formulario es válido
 function checkFormValidity() {
-    const isValid = Object.values(validationRules).every(rule => rule === true);
-    const submitButton = document.getElementById('submitButton');
-
-    if (isValid) {
-        submitButton.disabled = false;
-    } else {
-        submitButton.disabled = true;
-    }
+    const submit = document.getElementById('submitButton');
+    submit.disabled = !Object.values(validationRules).every(v => v);
 }
 
-// Inicialización cuando el DOM esté cargado
-document.addEventListener('DOMContentLoaded', function () {
-    // Event listeners para validación en tiempo real
-    document.getElementById('firstName').addEventListener('input', () => {
-        validateName('firstName');
-        checkFormValidity();
-    });
-
-    document.getElementById('lastName').addEventListener('input', () => {
-        validateName('lastName');
-        checkFormValidity();
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    ['firstName', 'lastName'].forEach(id =>
+        document.getElementById(id).addEventListener('input', e => {
+            validateName(e.target);
+            checkFormValidity();
+        })
+    );
 
     document.getElementById('username').addEventListener('input', () => {
         validateUsername();
@@ -277,13 +150,10 @@ document.addEventListener('DOMContentLoaded', function () {
         checkFormValidity();
     });
 
-    // Envío del formulario
-    document.getElementById('registerForm').addEventListener('submit', function (e) {
+    document.getElementById('registerForm').addEventListener('submit', e => {
         e.preventDefault();
-
-        // Validar todos los campos
-        validateName('firstName');
-        validateName('lastName');
+        // Validar todo
+        ['firstName', 'lastName'].forEach(id => validateName(document.getElementById(id)));
         validateUsername();
         validateEmail();
         validatePhone();
@@ -291,65 +161,42 @@ document.addEventListener('DOMContentLoaded', function () {
         validateConfirmPassword();
         validateTerms();
 
-        if (Object.values(validationRules).every(rule => rule === true)) {
-            // Mostrar estado de carga
-            const submitButton = document.getElementById('submitButton');
-            const buttonText = document.getElementById('buttonText');
-            const buttonLoading = document.getElementById('buttonLoading');
+        if (Object.values(validationRules).every(v => v)) {
+            const submit = document.getElementById('submitButton');
+            submit.disabled = true;
 
-            submitButton.disabled = true;
-            buttonText.style.display = 'none';
-            buttonLoading.style.display = 'inline-block';
-
-            // Enviar datos a la API Flask
-            const formData = {
-                username: this.username.value,
-                email: this.email.value,
-                phone: this.phone.value,
-                password: this.password.value,
-                firstName: this.firstName.value,
-                lastName: this.lastName.value,
+            const data = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                password: document.getElementById('password').value,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                direccion: document.getElementById('direccion').value,
             };
+
 
             fetch('http://127.0.0.1:5000/register', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             })
-                .then(response => response.json())
+                .then(res => res.json())
                 .then(data => {
                     if (data.user_id) {
-                        alert('✅ Registro exitoso! ID: ' + data.user_id);
-                        this.reset();
-                        Object.keys(validationRules).forEach(key => validationRules[key] = false);
-                        // Limpiar clases y mensajes igual que antes...
+                        alert('Registro exitoso! ID: ' + data.user_id);
+                        document.getElementById('registerForm').reset();
+                        Object.keys(validationRules).forEach(k => validationRules[k] = false);
+                        checkFormValidity();
                     } else {
-                        alert('❌ Error: ' + (data.error || 'Error desconocido'));
+                        alert('Error: ' + (data.error || 'Desconocido'));
+                        submit.disabled = false;
                     }
-                    // Resetear botón y carga igual que antes...
-                    const submitButton = document.getElementById('submitButton');
-                    const buttonText = document.getElementById('buttonText');
-                    const buttonLoading = document.getElementById('buttonLoading');
-                    buttonText.style.display = 'inline';
-                    buttonLoading.style.display = 'none';
-                    submitButton.disabled = true;
                 })
-                .catch(err => {
-                    alert('❌ Error al conectar con el servidor');
-                    console.error(err);
-                    const submitButton = document.getElementById('submitButton');
-                    const buttonText = document.getElementById('buttonText');
-                    const buttonLoading = document.getElementById('buttonLoading');
-                    buttonText.style.display = 'inline';
-                    buttonLoading.style.display = 'none';
-                    submitButton.disabled = false;
+                .catch(() => {
+                    alert('Error de conexión');
+                    submit.disabled = false;
                 });
-
-
-            // Inicializar estado del botón
-            checkFormValidity();
         }
-    })
-})
+    });
+});

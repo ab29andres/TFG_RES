@@ -1,8 +1,9 @@
 import os
 import datetime
+from bson import ObjectId
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
-import bcrypt
+import bcrypt 
 from flask_cors import CORS  # <-- Importar CORS
 
 # Configuración de Flask
@@ -20,6 +21,9 @@ BASE_URL = "http://127.0.0.1:5000"
 client = MongoClient('mongodb://localhost:27017/')
 db = client['restaurante']
 users_collection = db['usuarios']
+platos_collection = db['platos']
+pedidos_collection = db['pedidos']   
+
 
 # Ruta para registrar usuarios
 @app.route('/register', methods=['POST'])
@@ -34,8 +38,9 @@ def register_user():
         email = data.get('email')
         phone = data.get('phone')
         password = data.get('password')
+        direccion = data.get('direccion')  # Nuevo campo
 
-        if not all([username, email, phone, password]):
+        if not all([username, email, phone, password, direccion]):
             return jsonify({'error': 'Faltan datos requeridos'}), 400
 
         if users_collection.find_one({'email': email}):
@@ -47,7 +52,10 @@ def register_user():
             'username': username,
             'email': email,
             'phone': phone,
-            'password': hashed_password
+            'password': hashed_password,
+            'direccion': direccion,
+            'points': 250,  # Puntos iniciales al registrarse
+            'member_since': datetime.datetime.utcnow()  # Opcional, para el perfil
         }
 
         result = users_collection.insert_one(user)
@@ -58,10 +66,77 @@ def register_user():
         }), 201
 
     except Exception as e:
-        # Para mostrar error real en consola y en respuesta JSON
         print("Error en /register:", e)
         return jsonify({'error': str(e)}), 500
-    
+
+@app.route('/pedidos', methods=['POST'])
+def crear_pedido():
+    try:
+        data = request.get_json()
+        
+        usuario_id = data.get('usuario_id')
+        platos = data.get('platos')  # Lista de dicts: [{'plato_id': '...', 'cantidad': X}, ...]
+
+        if not usuario_id or not platos:
+            return jsonify({'error': 'usuario_id y platos son requeridos'}), 400
+
+        # ✅ Validar que el usuario existe
+        usuario = users_collection.find_one({'_id': ObjectId(usuario_id)})
+        if not usuario:
+            return jsonify({'error': 'Usuario no válido'}), 404
+
+        total = 0
+        for item in platos:
+            plato = platos_collection.find_one({'_id': ObjectId(item['plato_id'])})
+            if not plato:
+                return jsonify({'error': f"Plato con ID {item['plato_id']} no encontrado"}), 404
+            total += plato['precio'] * item['cantidad']
+
+        pedido = {
+            'usuario_id': ObjectId(usuario_id),
+            'platos': [{'plato_id': ObjectId(p['plato_id']), 'cantidad': p['cantidad']} for p in platos],
+            'fecha': datetime.datetime.utcnow(),
+            'total': total,
+            'estado': 'En preparación'
+        }
+
+        pedidos_collection.insert_one(pedido)
+        return jsonify({'message': 'Pedido creado correctamente', 'total': total}), 201
+
+    except Exception as e:
+        print("Error al crear pedido:", e)
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/pedidos/<usuario_id>', methods=['GET'])
+def obtener_pedidos_usuario(usuario_id):
+    try:
+        pedidos = list(pedidos_collection.find({'usuario_id': ObjectId(usuario_id)}))
+        resultado = []
+        for pedido in pedidos:
+            platos_info = []
+            for item in pedido['platos']:
+                plato = platos_collection.find_one({'_id': item['plato_id']})
+                if plato:
+                    platos_info.append({
+                        'nombre': plato.get('nombre'),
+                        'cantidad': item['cantidad'],
+                        'precio_unitario': plato.get('precio'),
+                        'subtotal': plato.get('precio') * item['cantidad']
+                    })
+
+            resultado.append({
+                'pedido_id': str(pedido['_id']),
+                'fecha': pedido['fecha'].strftime('%Y-%m-%d %H:%M'),
+                'estado': pedido['estado'],
+                'total': pedido['total'],
+                'platos': platos_info
+            })
+
+        return jsonify(resultado), 200
+
+    except Exception as e:
+        print("Error al obtener pedidos del usuario:", e)
+        return jsonify({'error': str(e)}), 500
 
 
 @app.route('/login', methods=['POST'])
@@ -95,7 +170,72 @@ def login_user():
         print("Error en /login:", e)
         return jsonify({'error': str(e)}), 500
 
+@app.route('/platos', methods=['GET'])
+def obtener_platos():
+    try:
+        platos = list(db['platos'].find())
+        resultado = []
+        for plato in platos: 
+            resultado.append({
+                '_id': str(plato['_id']),  # 👈 Agregado
+                'nombre': plato.get('nombre'),
+                'descripcion': plato.get('descripcion'),
+                'categoria': plato.get('categoria'),
+                'precio': plato.get('precio')
+            })
+
+        return jsonify(resultado), 200 
+
+    except Exception as e:
+        print("Error al obtener los platos:", e)
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/usuarios', methods=['GET'])
+def obtener_todos_los_usuarios():
+    try:
+        usuarios = list(users_collection.find({}, {'password': 0}))  # No mostrar contraseñas
+        resultado = []
+        for u in usuarios:
+            resultado.append({
+                'id': str(u['_id']),
+                'username': u.get('username'),
+                'email': u.get('email'),
+                'phone': u.get('phone'),
+                'direccion': u.get('direccion'),
+                'points': u.get('points'),
+                'member_since': u.get('member_since').strftime('%Y-%m-%d') if u.get('member_since') else None
+            })
+        return jsonify(resultado), 200
+
+    except Exception as e:
+        print("Error al obtener todos los usuarios:", e)
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/usuarios/<usuario_id>', methods=['GET'])
+def obtener_usuario_por_id(usuario_id):
+    try:
+        usuario = users_collection.find_one({'_id': ObjectId(usuario_id)}, {'password': 0})  # ❌ Excluimos contraseña
+        if not usuario:
+            return jsonify({'error': 'Usuario no encontrado'}), 404
+
+        resultado = {
+            'id': str(usuario['_id']),
+            'username': usuario.get('username'),
+            'email': usuario.get('email'),
+            'phone': usuario.get('phone'),
+            'direccion': usuario.get('direccion'),
+            'points': usuario.get('points'),
+            'member_since': usuario.get('member_since').strftime('%Y-%m-%d') if usuario.get('member_since') else None
+        }
+        return jsonify(resultado), 200
+
+    except Exception as e:
+        print("Error al obtener usuario:", e)
+        return jsonify({'error': str(e)}), 500
+
 
 # Ejecutar la app
 if __name__ == '__main__':
     app.run(debug=True)
+

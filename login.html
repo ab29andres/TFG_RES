@@ -96,40 +96,6 @@
             </div>
         </div>
     </div>
-    <script>
-        document.querySelector('.login-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const email = document.querySelector('input[placeholder="NOMBRE DE USUARIO"]').value.trim();
-            const password = document.querySelector('input[placeholder="CONTRASEÑA"]').value;
-
-            if (!email || !password) {
-                alert('Por favor completa ambos campos.');
-                return;
-            }
-
-            fetch('http://127.0.0.1:5000/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })  // <-- usa "email", no "username"
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.user_id) {
-                        alert(`Bienvenido, ${data.username}!`);
-                        window.location.href = 'perfil.html';
-                    } else {
-                        alert(` ${data.error}`);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error de conexión:', error);
-                    alert('Error al conectar con el servidor.');
-                });
-        });
-    </script>
-
+    <script src="scripts/login.js"></script>
 </body>
 </html>
