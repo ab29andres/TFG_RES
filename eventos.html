@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - Restaurante La Maison</title>
+    <link rel="stylesheet" href="styles/eventos.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header principal -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>La Maison</h1>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="reservar.html">Reservas</a></li>
+                    <li><a href="#">Chefs</a></li>
+                    <li><a href="#" class="active">Eventos</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="events-container">
+        <!-- Hero de eventos -->
+        <section class="events-hero">
+            <div class="hero-content">
+                <h1>Eventos Especiales</h1>
+                <p>Celebra los momentos más importantes de tu vida en un ambiente único y sofisticado</p>
+                <a href="#contacto" class="cta-button">Consultar Disponibilidad</a>
+            </div>
+        </section>
+
+        <!-- Tipos de eventos -->
+        <section class="event-types">
+            <div class="section-header">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos espacios y servicios personalizados para cada ocasión especial</p>
+            </div>
+
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-icon">💒</div>
+                    <h3>Bodas</h3>
+                    <p>Celebra el día más importante de tu vida con una experiencia gastronómica inolvidable. Menús personalizados y ambientes románticos.</p>
+                    <ul class="event-features">
+                        <li>Capacidad: 50-150 personas</li>
+                        <li>Menú personalizado</li>
+                        <li>Decoración incluida</li>
+                        <li>Coordinador de eventos</li>
+                    </ul>
+                    <div class="event-price">Desde €85/persona</div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">🎂</div>
+                    <h3>Cumpleaños</h3>
+                    <p>Haz de tu cumpleaños una celebración especial con nuestros espacios privados y menús festivos diseñados para la ocasión.</p>
+                    <ul class="event-features">
+                        <li>Capacidad: 20-80 personas</li>
+                        <li>Tarta personalizada</li>
+                        <li>Música ambiente</li>
+                        <li>Espacios privados</li>
+                    </ul>
+                    <div class="event-price">Desde €45/persona</div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">🏢</div>
+                    <h3>Eventos Corporativos</h3>
+                    <p>Impresiona a tus clientes y colaboradores con eventos corporativos de alto nivel en nuestras instalaciones exclusivas.</p>
+                    <ul class="event-features">
+                        <li>Capacidad: 30-200 personas</li>
+                        <li>Equipos audiovisuales</li>
+                        <li>Coffee breaks</li>
+                        <li>Servicio de catering</li>
+                    </ul>
+                    <div class="event-price">Desde €55/persona</div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">🎓</div>
+                    <h3>Graduaciones</h3>
+                    <p>Celebra tus logros académicos con una cena elegante que marque el inicio de una nueva etapa en tu vida.</p>
+                    <ul class="event-features">
+                        <li>Capacidad: 25-100 personas</li>
+                        <li>Menús especiales</li>
+                        <li>Fotografía del evento</li>
+                        <li>Brindis de honor</li>
+                    </ul>
+                    <div class="event-price">Desde €50/persona</div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">🎉</div>
+                    <h3>Celebraciones Familiares</h3>
+                    <p>Reuniones familiares, aniversarios y celebraciones especiales en un ambiente cálido y acogedor.</p>
+                    <ul class="event-features">
+                        <li>Capacidad: 15-60 personas</li>
+                        <li>Menús familiares</li>
+                        <li>Ambiente íntimo</li>
+                        <li>Servicio personalizado</li>
+                    </ul>
+                    <div class="event-price">Desde €40/persona</div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">🍷</div>
+                    <h3>Cenas Temáticas</h3>
+                    <p>Experiencias gastronómicas únicas con cenas temáticas, catas de vino y eventos culinarios especiales.</p>
+                    <ul class="event-features">
+                        <li>Capacidad: 20-50 personas</li>
+                        <li>Chef en vivo</li>
+                        <li>Maridajes especiales</li>
+                        <li>Experiencia interactiva</li>
+                    </ul>
+                    <div class="event-price">Desde €75/persona</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Espacios disponibles -->
+        <section class="venues-section">
+            <div class="section-header">
+                <h2>Nuestros Espacios</h2>
+                <p>Contamos con diferentes ambientes para adaptarnos a tus necesidades</p>
+            </div>
+
+            <div class="venues-grid">
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Salón Principal">
+                    </div>
+                    <div class="venue-info">
+                        <h3>Salón Principal</h3>
+                        <p>Nuestro espacio más amplio y elegante, perfecto para grandes celebraciones con capacidad para hasta 150 personas.</p>
+                        <div class="venue-specs">
+                            <span>📏 200m²</span>
+                            <span>👥 150 personas</span>
+                            <span>🎵 Sistema de sonido</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Salón Privado">
+                    </div>
+                    <div class="venue-info">
+                        <h3>Salón Privado</h3>
+                        <p>Espacio íntimo y acogedor ideal para celebraciones familiares y eventos corporativos pequeños.</p>
+                        <div class="venue-specs">
+                            <span>📏 80m²</span>
+                            <span>👥 50 personas</span>
+                            <span>🖥️ Proyector incluido</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Terraza">
+                    </div>
+                    <div class="venue-info">
+                        <h3>Terraza Exterior</h3>
+                        <p>Espacio al aire libre con vistas panorámicas, perfecto para eventos de temporada y celebraciones especiales.</p>
+                        <div class="venue-specs">
+                            <span>📏 120m²</span>
+                            <span>👥 80 personas</span>
+                            <span>🌟 Vista panorámica</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios incluidos -->
+        <section class="services-section">
+            <div class="section-header">
+                <h2>Servicios Incluidos</h2>
+                <p>Todo lo que necesitas para que tu evento sea perfecto</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">👨‍🍳</div>
+                    <h4>Chef Especializado</h4>
+                    <p>Nuestro chef creará un menú personalizado para tu evento</p>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">🍽️</div>
+                    <h4>Servicio Completo</h4>
+                    <p>Personal profesional para atender a todos tus invitados</p>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">🎨</div>
+                    <h4>Decoración</h4>
+                    <p>Ambientación y decoración acorde al tipo de evento</p>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">🎵</div>
+                    <h4>Sistema de Sonido</h4>
+                    <p>Equipos de audio profesionales para música y presentaciones</p>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">📸</div>
+                    <h4>Fotografía</h4>
+                    <p>Servicio de fotografía profesional para capturar los mejores momentos</p>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">🚗</div>
+                    <h4>Valet Parking</h4>
+                    <p>Servicio de aparcacoches para la comodidad de tus invitados</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulario de contacto -->
+        <section class="contact-section" id="contacto">
+            <div class="section-header">
+                <h2>Solicita tu Presupuesto</h2>
+                <p>Cuéntanos sobre tu evento y te ayudaremos a hacerlo realidad</p>
+            </div>
+
+            <div class="contact-container">
+                <form class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha">Fecha del Evento</label>
+                            <input type="date" id="fecha" name="fecha" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tipo-evento">Tipo de Evento</label>
+                            <select id="tipo-evento" name="tipo-evento" required>
+                                <option value="">Selecciona un tipo</option>
+                                <option value="boda">Boda</option>
+                                <option value="cumpleanos">Cumpleaños</option>
+                                <option value="corporativo">Evento Corporativo</option>
+                                <option value="graduacion">Graduación</option>
+                                <option value="familiar">Celebración Familiar</option>
+                                <option value="tematica">Cena Temática</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="invitados">Número de Invitados</label>
+                            <input type="number" id="invitados" name="invitados" min="10" max="200" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Detalles del Evento</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos más detalles sobre tu evento, preferencias especiales, etc."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Solicitar Presupuesto</button>
+                </form>
+
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <strong>Teléfono</strong>
+                            <p>+34 912 345 678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>eventos@lamaison.es</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <strong>Dirección</strong>
+                            <p>Calle Gourmet 123<br>28001 Madrid, España</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🕒</span>
+                        <div>
+                            <strong>Horario de Atención</strong>
+                            <p>Lunes a Viernes: 10:00 - 20:00<br>Sábados: 10:00 - 14:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Formulario de contacto
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu consulta! Te contactaremos pronto para discutir los detalles de tu evento.');
+        });
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
