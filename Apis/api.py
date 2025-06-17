@@ -238,4 +238,3 @@ def obtener_usuario_por_id(usuario_id):
 # Ejecutar la app
 if __name__ == '__main__':
     app.run(debug=True)
-
