@@ -18,13 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- CARGAR DATOS DEL USUARIO ---
     const usuario = JSON.parse(localStorage.getItem('usuario'));
-    console.log('Usuario cargado desde localStorage:', usuario);
 
     if (usuario) {
         document.getElementById('profile-Name').textContent = usuario.username || 'Sin nombre';
-        document.getElementById('profileMemberSince').textContent = ''; // o algo fijo, p.ej: 'Miembro desde: N/A'
+        document.getElementById('profileMemberSince').textContent = ''; // o algo fijo
         document.getElementById('profileEmail').textContent = usuario.email || 'Sin email';
-        document.getElementById('pointsvalue').textContent = usuario.points
+        document.getElementById('pointsvalue').textContent = usuario.points || '0';
         const telefonoElem = document.querySelector('.detail-value-telefono');
         if (telefonoElem) telefonoElem.textContent = usuario.phone || 'Sin teléfono';
         const direccionElem = document.querySelector('.detail-value-direccion');
@@ -32,6 +31,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const preferenciasElem = document.querySelector('.detail-value-preferencias');
         if (preferenciasElem) preferenciasElem.textContent = usuario.preferencias || 'No especificado';
     } else {
-        console.warn('No se encontró información del usuario. Por favor, inicia sesión.');
+        // Si no hay usuario logueado, redirigir a login
+        alert('Por favor inicia sesión para acceder al perfil.');
+        window.location.href = 'login.html'; // o index.html según tu estructura
+    }
+
+    // --- FUNCIÓN PARA CERRAR SESIÓN ---
+    function cerrarSesion() {
+        localStorage.removeItem('usuario');
+        sessionStorage.clear();
+        window.location.href = 'index.html'; // o login.html
+    }
+
+    // Asociar cerrar sesión al botón
+    const logoutBtn = document.querySelector('.logout-button');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            // Opcional: confirmación antes de cerrar sesión
+            if (confirm('¿Quieres cerrar sesión?')) {
+                cerrarSesion();
+            }
+        });
     }
 });

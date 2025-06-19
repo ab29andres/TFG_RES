@@ -1,0 +1,326 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.chef-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #ea580c;
+}
+
+.main-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #111827;
+}
+
+.subtitle {
+    font-size: 1.125rem;
+    color: #6b7280;
+}
+
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.order-card {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.order-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.35);
+}
+
+.card-header {
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+}
+
+.table-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.table-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.table-number {
+    width: 2rem;
+    height: 2rem;
+    background: #2563eb;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.time-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+}
+
+.time-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.clock-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.time-normal { 
+    color: #6b7280; 
+}
+
+.time-warning { 
+    color: #f59e0b; 
+    font-weight: 600; 
+}
+
+.time-danger { 
+    color: #dc2626; 
+    font-weight: bold; 
+}
+
+.waiter-info {
+    color: #6b7280;
+}
+
+.card-content {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.item-row {
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.item-row:hover {
+    border-color: #93c5fd;
+}
+
+.item-row.completed {
+    background: #f0fdf4;
+    border-color: #86efac;
+    opacity: 0.75;
+}
+
+.item-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.checkbox {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #d1d5db;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.checkbox:hover {
+    border-color: #16a34a;
+}
+
+.checkbox.checked {
+    background: #16a34a;
+    border-color: #16a34a;
+    color: white;
+    font-weight: bold;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.icon-main { 
+    color: #dc2626; 
+}
+
+.icon-side { 
+    color: #16a34a; 
+}
+
+.icon-drink { 
+    color: #2563eb; 
+}
+
+.quantity {
+    font-weight: bold;
+    font-size: 1.125rem;
+    color: #2563eb;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #111827;
+}
+
+.item-name.completed {
+    text-decoration: line-through;
+    color: #6b7280;
+}
+
+.item-notes {
+    font-size: 0.875rem;
+    color: #f59e0b;
+    margin-top: 0.25rem;
+    font-weight: 500;
+}
+
+.separator {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1rem 0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.empty-icon {
+    width: 6rem;
+    height: 6rem;
+    color: #9ca3af;
+    margin: 0 auto 1.5rem;
+}
+
+.empty-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.empty-text {
+    font-size: 1.125rem;
+    color: #6b7280;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .orders-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-title {
+        font-size: 1.875rem;
+    }
+    
+    .container {
+        padding: 0 0.5rem;
+    }
+    
+    .checkbox {
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .item-row {
+        padding: 1rem;
+    }
+    
+    .quantity {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    .card-header {
+        padding: 1rem;
+    }
+    
+    .card-content {
+        padding: 0 1rem 1rem 1rem;
+    }
+    
+    .table-title {
+        font-size: 1.25rem;
+    }
+    
+    .checkbox {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.125rem;
+    }
+}

@@ -80,11 +80,26 @@ def crear_pedido():
         if not usuario_id or not platos:
             return jsonify({'error': 'usuario_id y platos son requeridos'}), 400
 
-        # ✅ Validar que el usuario existe
+        # Verificar que el usuario existe
         usuario = users_collection.find_one({'_id': ObjectId(usuario_id)})
         if not usuario:
             return jsonify({'error': 'Usuario no válido'}), 404
 
+        # Bloqueo de 5 minutos desde el último pedido
+        ultimo_pedido = pedidos_collection.find_one(
+            {'usuario_id': ObjectId(usuario_id)},
+            sort=[('fecha', -1)]
+        )
+        if ultimo_pedido:
+            ahora = datetime.datetime.utcnow()
+            diferencia = ahora - ultimo_pedido['fecha']
+            if diferencia.total_seconds() < 300:
+                minutos_restantes = int((300 - diferencia.total_seconds()) // 60) + 1
+                return jsonify({
+                    'error': f'Debe esperar {minutos_restantes} minutos antes de hacer otro pedido'
+                }), 429
+
+        # Calcular total del pedido
         total = 0
         for item in platos:
             plato = platos_collection.find_one({'_id': ObjectId(item['plato_id'])})
@@ -92,6 +107,7 @@ def crear_pedido():
                 return jsonify({'error': f"Plato con ID {item['plato_id']} no encontrado"}), 404
             total += plato['precio'] * item['cantidad']
 
+        # Insertar pedido
         pedido = {
             'usuario_id': ObjectId(usuario_id),
             'platos': [{'plato_id': ObjectId(p['plato_id']), 'cantidad': p['cantidad']} for p in platos],
@@ -99,13 +115,26 @@ def crear_pedido():
             'total': total,
             'estado': 'En preparación'
         }
-
         pedidos_collection.insert_one(pedido)
-        return jsonify({'message': 'Pedido creado correctamente', 'total': total}), 201
+
+        # Calcular y sumar puntos: 15 puntos cada 3 euros
+        puntos_obtenidos = (int(total) // 3) * 15
+        users_collection.update_one(
+            {'_id': ObjectId(usuario_id)},
+            {'$inc': {'points': puntos_obtenidos}}
+        )
+
+        return jsonify({
+            'message': 'Pedido creado correctamente',
+            'total': total,
+            'puntos_ganados': puntos_obtenidos
+        }), 201
 
     except Exception as e:
         print("Error al crear pedido:", e)
         return jsonify({'error': str(e)}), 500
+
+
 
 @app.route('/pedidos/<usuario_id>', methods=['GET'])
 def obtener_pedidos_usuario(usuario_id):
@@ -161,7 +190,10 @@ def login_user():
                 'message': 'Inicio de sesión exitoso',
                 'user_id': str(user['_id']),
                 'username': user['username'],
-                'email': user['email']
+                'email': user['email'],
+                'phone': user.get('phone'),
+                'direccion': user.get('direccion'),
+                'points': user.get('points'),
             }), 200
         else:
             return jsonify({'error': 'Contraseña incorrecta'}), 401

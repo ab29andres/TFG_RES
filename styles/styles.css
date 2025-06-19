@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
 }
 
 body {
@@ -20,7 +20,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
 }
 
 .container {
@@ -71,7 +71,7 @@ header {
 }
 
 .nav-link.active::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -5px;
     left: 0;
@@ -98,7 +98,8 @@ header {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -163,15 +164,13 @@ header {
     color: #1a1a1a;
 }
 
-
 /* dsadsadsa */
-
 
 /* Añadir estos estilos al CSS existente */
 
 /* Main Hero Styles */
 .main-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/hero-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("images/hero-bg.jpg");
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -241,7 +240,7 @@ header {
 }
 
 .dish-price {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     color: #c8a97e;
 }
 
@@ -279,7 +278,7 @@ header {
 }
 
 .dish-image::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -10px;
     left: -10px;
@@ -324,7 +323,7 @@ header {
 }
 
 .menu-item h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     color: #333;
     margin-bottom: 15px;
     font-size: 1.4rem;
@@ -402,7 +401,7 @@ header {
 }
 
 .price {
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 700;
     color: #c8a97e;
     font-size: 1.6rem;
@@ -455,18 +454,34 @@ header {
     }
 }
 
-
-
 /* Features Section */
 .features-section {
     padding: 80px 0;
     background-color: #fff;
 }
 
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.section-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
 .features-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 .feature {
@@ -475,6 +490,8 @@ header {
     border: 1px solid #eee;
     transition: all 0.3s;
     text-decoration: none;
+    max-width: 400px;
+    width: 100%;
 }
 
 .feature:hover {
@@ -529,7 +546,7 @@ footer {
 }
 
 .footer-section h3::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -603,7 +620,8 @@ footer {
     }
 
     .features-grid {
-        grid-template-columns: repeat(3, 1fr);
+        flex-direction: row;
+        gap: 30px;
     }
 
     .footer-content {

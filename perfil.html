@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil - Restaurante Elegante</title>
     <link rel="stylesheet" href="styles/perfil.css">
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -22,7 +24,18 @@
                     <a href="#" class="nav-link">Sobre Nosotros</a>
                     <a href="#footer" class="nav-link">Contacto</a>
                 </nav>
-                <a href="#" class="login-button active">Mi Perfil</a>
+                <div class="user-actions">
+                    <a href="#" class="login-button active">Mi Perfil</a>
+                    <button class="logout-button" onclick="cerrarSesion()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                            <polyline points="16,17 21,12 16,7" />
+                            <line x1="21" y1="12" x2="9" y2="12" />
+                        </svg>
+                        Cerrar Sesión
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -31,7 +44,7 @@
     <main>
         <div class="container">
             <h1 class="profile-title">Mi Perfil</h1>
-            
+
             <div class="profile-container">
                 <!-- Información del perfil -->
                 <div class="profile-card">
@@ -47,7 +60,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="profile-details">
                         <div class="detail-item">
                             <span class="detail-label">Email:</span>
@@ -62,29 +75,25 @@
                             <span class="detail-value-direccion">Calle Principal 123, Madrid</span>
                         </div>
                         <div class="detail-item">
-                            <span class="detail-label">Preferencias:</span>
-                            <span class="detail-value-preferencias">Vegetariano, Mesa junto a ventana</span>
-                        </div>
-                        <div class="detail-item">
                             <span class="detail-label">Contraseña:</span>
                             <span class="detail-value">*******</span>
                         </div>
                     </div>
-                    
+
                     <button class="edit-profile-btn">Editar Perfil</button>
                 </div>
-                
+
                 <!-- Sistema de puntos -->
                 <div class="points-card">
                     <h2 class="card-title">Mis Puntos</h2>
-                    
+
                     <div class="points-summary">
                         <div class="points-circle">
                             <span class="points-value" id="pointsvalue">2,450</span>
                             <span class="points-label">puntos</span>
                         </div>
                     </div>
-                    
+
                     <div class="points-progress">
                         <div class="progress-label">
                             <span>Nivel Oro</span>
@@ -97,74 +106,29 @@
                             <span>2,450 / 3,500 puntos para el siguiente nivel</span>
                         </div>
                     </div>
-                    
+
                     <div class="points-info">
                         <h3>¿Cómo acumular puntos?</h3>
                         <ul>
-                            <li>10 puntos por cada 3 euros gastados en el restaurante</li>
+                            <li>15 puntos por cada 3 euros gastados en el restaurante</li>
                             <li>100 puntos extra por cada reserva completada</li>
                             <li>250 puntos por compartir tu experiencia en redes sociales</li>
                             <li>500 puntos por tu cumpleaños</li>
                         </ul>
                     </div>
                 </div>
-                
-                <!-- Historial de pedidos -->
-                <div class="history-card">
-                    <h2 class="card-title">Historial de Visitas</h2>
-                    
-                    <div class="history-list">
-                        <div class="history-item">
-                            <div class="history-date">15 Abril 2024</div>
-                            <div class="history-details">
-                                <div class="history-title">Cena - 4 personas</div>
-                                <div class="history-amount">Total: 120€</div>
-                                <div class="history-points">+1,200 puntos</div>
-                            </div>
-                            <div class="history-actions">
-                                <button class="view-details-btn">Ver detalles</button>
-                            </div>
-                        </div>
-                        
-                        <div class="history-item">
-                            <div class="history-date">28 Marzo 2024</div>
-                            <div class="history-details">
-                                <div class="history-title">Comida - 2 personas</div>
-                                <div class="history-amount">Total: 75€</div>
-                                <div class="history-points">+750 puntos</div>
-                            </div>
-                            <div class="history-actions">
-                                <button class="view-details-btn">Ver detalles</button>
-                            </div>
-                        </div>
-                        
-                        <div class="history-item">
-                            <div class="history-date">14 Febrero 2024</div>
-                            <div class="history-details">
-                                <div class="history-title">Cena San Valentín - 2 personas</div>
-                                <div class="history-amount">Total: 150€</div>
-                                <div class="history-points">+1,500 puntos</div>
-                            </div>
-                            <div class="history-actions">
-                                <button class="view-details-btn">Ver detalles</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button class="view-all-btn">Ver todo el historial</button>
-                </div>
-                
+
                 <!-- Catálogo de recompensas -->
                 <div class="rewards-card">
                     <h2 class="card-title">Catálogo de Recompensas</h2>
-                    
+
                     <div class="rewards-filter">
                         <button class="filter-btn active" data-filter="all">Todas</button>
                         <button class="filter-btn" data-filter="food">Comida</button>
                         <button class="filter-btn" data-filter="drinks">Bebidas</button>
                         <button class="filter-btn" data-filter="experiences">Experiencias</button>
                     </div>
-                    
+
                     <div class="rewards-list">
                         <div class="reward-item" data-category="food">
                             <div class="reward-image">
@@ -172,12 +136,13 @@
                             </div>
                             <div class="reward-info">
                                 <h3 class="reward-title">Postre a elegir</h3>
-                                <p class="reward-description">Cualquier postre de nuestra carta, gratis con tu próxima visita.</p>
+                                <p class="reward-description">Cualquier postre de nuestra carta, gratis con tu próxima
+                                    visita.</p>
                                 <div class="reward-points">1,500 puntos</div>
                             </div>
                             <button class="redeem-btn" data-reward-id="1" data-reward-points="1500">Canjear</button>
                         </div>
-                        
+
                         <div class="reward-item" data-category="drinks">
                             <div class="reward-image">
                                 <img src="/placeholder.svg?height=120&width=120" alt="Botella de vino">
@@ -189,7 +154,7 @@
                             </div>
                             <button class="redeem-btn" data-reward-id="2" data-reward-points="2000">Canjear</button>
                         </div>
-                        
+
                         <div class="reward-item" data-category="experiences">
                             <div class="reward-image">
                                 <img src="/placeholder.svg?height=120&width=120" alt="Cena para dos">
@@ -201,37 +166,39 @@
                             </div>
                             <button class="redeem-btn" data-reward-id="3" data-reward-points="5000">Canjear</button>
                         </div>
-                        
+
                         <div class="reward-item" data-category="food">
                             <div class="reward-image">
                                 <img src="/placeholder.svg?height=120&width=120" alt="Entrante gratis">
                             </div>
                             <div class="reward-info">
                                 <h3 class="reward-title">Entrante a elegir</h3>
-                                <p class="reward-description">Cualquier entrante de nuestra carta, gratis con tu próxima visita.</p>
+                                <p class="reward-description">Cualquier entrante de nuestra carta, gratis con tu próxima
+                                    visita.</p>
                                 <div class="reward-points">1,200 puntos</div>
                             </div>
                             <button class="redeem-btn" data-reward-id="4" data-reward-points="1200">Canjear</button>
                         </div>
-                        
+
                         <div class="reward-item" data-category="experiences">
                             <div class="reward-image">
                                 <img src="/placeholder.svg?height=120&width=120" alt="Clase de cocina">
                             </div>
                             <div class="reward-info">
                                 <h3 class="reward-title">Clase de cocina con nuestro chef</h3>
-                                <p class="reward-description">Aprende a cocinar con nuestro chef ejecutivo (sesión de 2 horas).</p>
+                                <p class="reward-description">Aprende a cocinar con nuestro chef ejecutivo (sesión de 2
+                                    horas).</p>
                                 <div class="reward-points">3,500 puntos</div>
                             </div>
                             <button class="redeem-btn" data-reward-id="5" data-reward-points="3500">Canjear</button>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Recompensas canjeadas -->
                 <div class="redeemed-card">
                     <h2 class="card-title">Mis Recompensas Canjeadas</h2>
-                    
+
                     <div class="redeemed-list" id="redeemedList">
                         <div class="empty-redeemed">
                             <p>Aún no has canjeado ninguna recompensa.</p>
@@ -269,8 +236,8 @@
             <span class="close-modal">&times;</span>
             <div class="success-icon">
                 <svg viewBox="0 0 24 24" width="64" height="64">
-                    <circle cx="12" cy="12" r="11" fill="#b8860b" stroke="none"/>
-                    <path d="M7 13l3 3 7-7" stroke="white" stroke-width="2" fill="none"/>
+                    <circle cx="12" cy="12" r="11" fill="#b8860b" stroke="none" />
+                    <path d="M7 13l3 3 7-7" stroke="white" stroke-width="2" fill="none" />
                 </svg>
             </div>
             <h2>¡Canje Exitoso!</h2>
@@ -289,6 +256,22 @@
         </div>
     </div>
 
+    <!-- Modal de confirmación de cierre de sesión -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Confirmar Cierre de Sesión</h2>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas cerrar tu sesión?</p>
+                <p>Serás redirigido a la página principal.</p>
+            </div>
+            <div class="modal-actions">
+                <button id="cancelLogout" class="cancel-btn">Cancelar</button>
+                <button id="confirmLogout" class="confirm-btn">Cerrar Sesión</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer dinámico -->
     <div id="footer-placeholder"></div>
 
@@ -303,5 +286,51 @@
     </script>
 
     <script src="scripts/perfil.js"></script>
+    <script>
+        // Función para cerrar sesión
+        function cerrarSesion() {
+            document.getElementById('logoutModal').style.display = 'flex';
+        }
+
+        // Event listeners para el modal de logout
+        document.addEventListener('DOMContentLoaded', function () {
+            const logoutModal = document.getElementById('logoutModal');
+            const cancelLogout = document.getElementById('cancelLogout');
+            const confirmLogout = document.getElementById('confirmLogout');
+            const closeModalBtns = document.querySelectorAll('.close-modal');
+
+            // Cerrar modal al hacer clic en cancelar
+            cancelLogout.addEventListener('click', function () {
+                logoutModal.style.display = 'none';
+            });
+
+            // Confirmar cierre de sesión
+            confirmLogout.addEventListener('click', function () {
+                // Aquí puedes agregar la lógica para cerrar sesión
+                // Por ejemplo, limpiar localStorage, cookies, etc.
+                localStorage.removeItem('userSession');
+                sessionStorage.clear();
+
+                // Redirigir a la página principal
+                window.location.href = 'index.html';
+            });
+
+            // Cerrar modales al hacer clic en la X
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const modal = this.closest('.modal');
+                    modal.style.display = 'none';
+                });
+            });
+
+            // Cerrar modal al hacer clic fuera de él
+            window.addEventListener('click', function (event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>

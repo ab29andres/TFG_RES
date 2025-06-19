@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
 }
 
 body {
@@ -49,8 +49,16 @@ header {
     transition: color 0.3s;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
     color: #b8860b;
+}
+
+/* Estilos para las acciones de usuario */
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .login-button {
@@ -63,8 +71,35 @@ header {
     transition: background-color 0.3s;
 }
 
-.login-button:hover, .login-button.active {
+.login-button:hover,
+.login-button.active {
     background-color: #a67908;
+}
+
+/* Estilos del botón de cerrar sesión */
+.logout-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+.logout-button svg {
+    width: 16px;
+    height: 16px;
 }
 
 /* Estilos de la sección principal */
@@ -88,7 +123,11 @@ main {
 }
 
 /* Estilos de las tarjetas */
-.profile-card, .points-card, .history-card, .rewards-card, .redeemed-card {
+.profile-card,
+.points-card,
+.history-card,
+.rewards-card,
+.redeemed-card {
     background-color: white;
     border-radius: 8px;
     padding: 30px;
@@ -334,7 +373,8 @@ main {
 }
 
 /* Estilos de recompensas */
-.rewards-card, .redeemed-card {
+.rewards-card,
+.redeemed-card {
     grid-column: span 2;
 }
 
@@ -354,7 +394,8 @@ main {
     transition: all 0.3s;
 }
 
-.filter-btn:hover, .filter-btn.active {
+.filter-btn:hover,
+.filter-btn.active {
     background-color: #b8860b;
     color: white;
     border-color: #b8860b;
@@ -628,7 +669,8 @@ footer {
     color: #b8860b;
 }
 
-.footer-section p, .footer-section li {
+.footer-section p,
+.footer-section li {
     margin-bottom: 8px;
 }
 
@@ -669,8 +711,9 @@ footer {
     .profile-container {
         grid-template-columns: 1fr;
     }
-    
-    .rewards-card, .redeemed-card {
+
+    .rewards-card,
+    .redeemed-card {
         grid-column: span 1;
     }
 }
@@ -679,34 +722,45 @@ footer {
     .navigation {
         display: none;
     }
-    
+
     .header-content {
         justify-content: space-between;
     }
-    
-    .rewards-list, .redeemed-list {
+
+    .user-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .logout-button {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .rewards-list,
+    .redeemed-list {
         grid-template-columns: 1fr;
     }
-    
+
     .profile-header {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .profile-avatar {
         margin-right: 0;
         margin-bottom: 15px;
     }
-    
+
     .history-item {
         flex-direction: column;
     }
-    
+
     .history-date {
         width: 100%;
         margin-bottom: 10px;
     }
-    
+
     .history-actions {
         margin-top: 10px;
     }
