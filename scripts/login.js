@@ -10,8 +10,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     }
 
     try {
-        // Envías las credenciales al backend para validar
-        const res = await fetch('http://localhost:3000/api/login', {
+        const res = await fetch('http://127.0.0.1:5000/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -19,14 +18,20 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 
         const data = await res.json();
 
-        if (res.ok && data.user) {
-            // Guardas el usuario recibido en localStorage
-            localStorage.setItem('usuario', JSON.stringify(data.user));
+        if (res.ok && data.user_id) {
+            const user = {
+                id: data.user_id,
+                username: data.username,
+                email: data.email,
+                phone: data.phone,
+                direccion: data.direccion,
+                points: data.points
+            };
 
-            // Rediriges al perfil
+            localStorage.setItem('usuario', JSON.stringify(user));
             window.location.href = 'perfil.html';
         } else {
-            alert(data.message || 'Error al iniciar sesión');
+            alert(data.error || 'Error al iniciar sesión');
         }
     } catch (err) {
         console.error('Error en login:', err);
