@@ -36,7 +36,7 @@
             <div class="hero-content">
                 <h1>Eventos Especiales</h1>
                 <p>Celebra los momentos más importantes de tu vida en un ambiente único y sofisticado</p>
-                <a href="#contacto" class="cta-button">Consultar Disponibilidad</a>
+                <a href="reservar.html" class="cta-button">Consultar</a>
             </div>
         </section>
 
@@ -238,67 +238,14 @@
             </div>
         </section>
 
-        <!-- Formulario de contacto -->
+        <!-- Información de contacto -->
         <section class="contact-section" id="contacto">
             <div class="section-header">
-                <h2>Solicita tu Presupuesto</h2>
-                <p>Cuéntanos sobre tu evento y te ayudaremos a hacerlo realidad</p>
+                <h2>Información de Contacto</h2>
             </div>
 
             <div class="contact-container">
-                <form class="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nombre">Nombre Completo</label>
-                            <input type="text" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="fecha">Fecha del Evento</label>
-                            <input type="date" id="fecha" name="fecha" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="tipo-evento">Tipo de Evento</label>
-                            <select id="tipo-evento" name="tipo-evento" required>
-                                <option value="">Selecciona un tipo</option>
-                                <option value="boda">Boda</option>
-                                <option value="cumpleanos">Cumpleaños</option>
-                                <option value="corporativo">Evento Corporativo</option>
-                                <option value="graduacion">Graduación</option>
-                                <option value="familiar">Celebración Familiar</option>
-                                <option value="tematica">Cena Temática</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="invitados">Número de Invitados</label>
-                            <input type="number" id="invitados" name="invitados" min="10" max="200" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="mensaje">Detalles del Evento</label>
-                        <textarea id="mensaje" name="mensaje" rows="5"
-                            placeholder="Cuéntanos más detalles sobre tu evento, preferencias especiales, etc."></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-button">Solicitar Presupuesto</button>
-                </form>
-
                 <div class="contact-info">
-                    <h3>Información de Contacto</h3>
                     <div class="contact-item">
                         <span class="contact-icon">📞</span>
                         <div>
@@ -331,18 +278,12 @@
             </div>
         </section>
     </div>
+    
     <!-- Footer dinámico -->
     <div id="footer-placeholder"></div>
 
-    <!-- Script para insertar footer -->
-
+    <!-- Script para scroll suave -->
     <script>
-        // Formulario de contacto
-        document.querySelector('.contact-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('¡Gracias por tu consulta! Te contactaremos pronto para discutir los detalles de tu evento.');
-        });
-
         // Scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

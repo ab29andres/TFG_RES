@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     await cargarPlatosDinamicamente();
 
     const usuario = obtenerUsuarioActual();
+    const historialGuardado = localStorage.getItem('historialPedidos');
+
     if (usuario) {
         if (historialGuardado) {
             const historialParsed = JSON.parse(historialGuardado);
@@ -258,13 +260,11 @@ async function cargarHistorialYPuntos(usuario_id) {
 
 function logout() {
     localStorage.removeItem('usuario');
-    localStorage.removeItem('historialPedidos');
-
-    alert('Has cerrado sesión y se ha borrado tu historial.');
-    orden.length = 0;
-    renderizarOrden();
-    document.getElementById('user-points').textContent = '';
+    localStorage.removeItem('loginTimestamp'); // si lo sigues usando
+    localStorage.removeItem('historialPedidos'); // 👈 elimina historial
+    window.location.href = 'login.html'; // o lo que uses para redirigir
 }
+
 
 
 
